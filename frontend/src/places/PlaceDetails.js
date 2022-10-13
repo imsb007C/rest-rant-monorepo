@@ -51,6 +51,7 @@ function PlaceDetails() {
 		const response = await fetch(`http://localhost:5000/places/${place.placeId}/comments`, {
 			method: 'POST',
 			headers: {
+				'Authorization': `Bearer ${localStorage.getItem('token')}`,
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(commentAttributes)
@@ -143,7 +144,7 @@ function PlaceDetails() {
 			</div>
 			<hr />
 			<h2>Got Your Own Rant or Rave?</h2>
-			<NewCommentForm
+			<NewCommentForm 
 				place={place}
 				onSubmit={createComment}
 			/>
